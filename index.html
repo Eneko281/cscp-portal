@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundación SCP — Portal Sitio-Axiom</title>
+  <meta name="description" content="Portal interno de la Fundación SCP — Sitio-Axiom. Asegurar. Contener. Proteger.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+
+<h2 class="sr-only">Portal de la Fundación SCP — Sitio-Axiom</h2>
+
+<!-- ── MODAL LOGIN ── -->
+<div class="modal-overlay hidden" id="login-overlay" role="dialog" aria-modal="true" aria-labelledby="login-title">
+  <div class="modal">
+    <button class="modal-close" id="login-close" aria-label="Cerrar">&times;</button>
+    <div class="modal-logo">
+      <img src="assets/logos/logo-main.png" alt="Logo Fundación SCP">
+      <div class="modal-title" id="login-title">FUNDACIÓN SCP</div>
+      <div class="modal-sub">SITIO-AXIOM — ACCESO SEGURO</div>
+    </div>
+    <div class="modal-form" id="login-form">
+      <button class="btn btn-discord btn-full" id="login-discord" type="button">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.11 18.1.128 18.14.157 18.16a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Acceder con Discord
+      </button>
+      <div class="modal-divider">O con credenciales</div>
+      <div class="input-group">
+        <label class="input-label" for="login-username">Usuario / ID de Discord</label>
+        <input class="input-field" type="text" id="login-username" placeholder="nombre_usuario" autocomplete="username">
+      </div>
+      <div class="input-group">
+        <label class="input-label" for="login-password">Contraseña</label>
+        <input class="input-field" type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <div class="modal-error" id="login-error" role="alert"></div>
+      <button class="btn btn-primary btn-full" id="login-submit" type="button">Iniciar Sesión</button>
+      <div class="modal-warning">
+        AVISO: El acceso no autorizado está prohibido. Todos los intentos son registrados por el Sistema ALMA.
+      </div>
+      <!-- DEMO — eliminar en producción -->
+      <div style="margin-top:8px;padding:8px;background:rgba(255,255,255,0.03);border-radius:var(--radius);font-family:var(--font-mono);font-size:9px;color:var(--c-text-muted);line-height:1.8;">
+        DEMO · admin/axiom2024 · agente/1234 · investigador/1234
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LANDING (SIN LOGIN)
+═══════════════════════════════════════════════════════════ -->
+<div id="landing">
+
+  <!-- Theme toggle en landing -->
+  <div class="landing-theme-btn">
+    <button class="theme-toggle" data-action="toggle-theme" aria-label="Cambiar tema" title="Cambiar tema">
+      <!-- Sol (modo oscuro activo → cambiar a claro) -->
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+      <!-- Luna (modo claro activo → cambiar a oscuro) -->
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-bg-image"></div>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-corners" aria-hidden="true">
+      <div class="hero-corner tl"></div>
+      <div class="hero-corner tr"></div>
+      <div class="hero-corner bl"></div>
+      <div class="hero-corner br"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-logo" aria-label="Logo Fundación SCP">
+        <img src="assets/logos/logo-main.png" alt="Fundación SCP — Logo principal" class="hero-logo-img">
+      </div>
+      <div class="hero-pretitle">Portal de Acceso Seguro — Sitio-Axiom</div>
+      <h1 class="hero-title"><span class="accent">Fundación</span> SCP</h1>
+      <p class="hero-tagline">Asegurar &nbsp;·&nbsp; Contener &nbsp;·&nbsp; Proteger</p>
+      <div class="hero-alert" role="alert">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6,1 11,11 1,11"/></svg>
+        ACCESO NO AUTORIZADO PROHIBIDO — SISTEMA MONITORIZANDO
+      </div>
+      <div class="hero-actions">
+        <button class="btn btn-primary btn-lg" data-action="open-login">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+          Acceder al Portal
+        </button>
+        <button class="btn btn-ghost btn-lg" id="hero-scroll">
+          Conocer la Fundación
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <button class="hero-scroll" id="hero-scroll-btn" aria-label="Desplazar hacia abajo">
+      <span>Desplazar</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 9L3 5h8z"/></svg>
+    </button>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="landing-section" id="about-section">
+    <div class="about-grid">
+      <div>
+        <div class="section-eyebrow">Dentro del universo</div>
+        <h2 class="section-title">La <span class="accent">Fundación SCP</span></h2>
+        <div class="section-bar"></div>
+        <div class="info-block inrol mb-16">
+          <div class="info-block-label">Perspectiva IN-ROL</div>
+          <div class="info-block-title">Una organización que mantiene el mundo en pie</div>
+          <p>La Fundación SCP es una organización secreta internacional cuya misión es localizar, asegurar y contener entidades, objetos y fenómenos que desafían las leyes de la naturaleza. Sin la Fundación, la humanidad estaría expuesta a amenazas que no puede comprender.</p>
+          <p>El <strong>Sitio-Axiom</strong> es nuestra instalación principal de operaciones. Aquí se contienen las anomalías más peligrosas y se coordinan las misiones de las Fuerzas de Tarea Móvil.</p>
+          <p>
+            <!--
+              ═══════════════════════════════════════════
+              ZONA EDITABLE — Texto IN-ROL de tu comunidad
+              ═══════════════════════════════════════════
+            -->
+            Cada agente tiene un departamento asignado, un nivel de autorización y responsabilidades específicas. Tu lealtad a la Fundación es lo único que separa a la humanidad del caos anómalo.
+          </p>
+        </div>
+        <div class="info-block offrol">
+          <div class="info-block-label">Perspectiva OFF-ROL</div>
+          <div class="info-block-title">Comunidad Roblox + Discord</div>
+          <p>Somos una comunidad de <strong>LARP digital</strong> dentro de Roblox basada en el universo SCP. Organizamos sesiones en vivo llamadas <strong>SSU</strong> donde los jugadores interpretan agentes de la Fundación en tiempo real.</p>
+          <p>
+            <!--
+              ═══════════════════════════════════════════
+              ZONA EDITABLE — Descripción de tu comunidad
+              ═══════════════════════════════════════════
+            -->
+            Únete a nuestro servidor de Discord para recibir actualizaciones de las próximas SSU, solicitar tu departamento y acceder al portal interno con tu cuenta verificada.
+          </p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+            <a href="https://discord.gg/TU_SERVIDOR" target="_blank" rel="noopener" class="btn btn-discord">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.11 18.1.128 18.14.157 18.16a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+              Unirse al Discord
+            </a>
+            <a href="https://www.roblox.com/groups/TU_GRUPO" target="_blank" rel="noopener" class="btn btn-ghost">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.926 23.998L0 18.491 5.075.002 24 5.51z"/></svg>
+              Grupo de Roblox
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Imagen principal — reemplazar src con tu imagen real -->
+        <div class="img-placeholder mb-16">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4" aria-hidden="true"><rect x="4" y="4" width="24" height="24" rx="2"/><path d="M4 12h24M12 4v24"/></svg>
+          <span>IMAGEN · SITIO-AXIOM</span>
+          <span style="font-size:8px;opacity:0.6">Reemplazar con imagen real</span>
+        </div>
+
+        <!-- Logos de departamentos como preview -->
+        <div class="card-label mb-12">DEPARTAMENTOS DEL SITIO-AXIOM</div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:16px;">
+          <img src="assets/logos/dept-seguridad-shield.png" alt="Seguridad" style="width:100%;aspect-ratio:1;object-fit:contain;opacity:0.8;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));">
+          <img src="assets/logos/dept-trabajo-shield.png"   alt="MTF"       style="width:100%;aspect-ratio:1;object-fit:contain;opacity:0.8;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));">
+          <img src="assets/logos/dept-medicina-shield.png"  alt="Medicina"  style="width:100%;aspect-ratio:1;object-fit:contain;opacity:0.8;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));">
+          <img src="assets/logos/dept-ciencia-shield.png"   alt="Ciencia"   style="width:100%;aspect-ratio:1;object-fit:contain;opacity:0.8;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));">
+          <img src="assets/logos/dept-ingenieria-shield.png" alt="Ing."     style="width:100%;aspect-ratio:1;object-fit:contain;opacity:0.8;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));">
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="card"><div class="card-label">SCPs Contenidos</div><div class="card-value accent">247</div><div class="card-caption">En el Sitio-Axiom</div></div>
+          <div class="card"><div class="card-label">Instalaciones</div><div class="card-value">7</div><div class="card-caption">Sites activos</div></div>
+          <div class="card"><div class="card-label">Grupos de interés</div><div class="card-value">6</div><div class="card-caption">Monitorizados</div></div>
+          <div class="card"><div class="card-label">Autoridad máxima</div><div class="card-value" style="font-size:20px">O5</div><div class="card-caption">Consejo de supervisión</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLASES -->
+  <section class="landing-section-dark">
+    <div class="classes-section-inner">
+      <div class="section-eyebrow">Sistema de clasificación</div>
+      <h2 class="section-title">Clases de <span class="accent">Contención</span></h2>
+      <div class="section-bar"></div>
+      <p class="section-body">Cada anomalía catalogada recibe una clasificación según el nivel de peligro y la dificultad de contención. Conocer estas clases es obligatorio para todo el personal del Sitio-Axiom.</p>
+      <div class="classes-grid">
+        <div class="class-card safe"><div class="class-card-name">Safe</div><div class="class-card-desc">Predecibles y fáciles de contener. No representan amenaza activa bajo protocolos estándar.</div></div>
+        <div class="class-card euclid"><div class="class-card-name">Euclid</div><div class="class-card-desc">Comportamiento impredecible. Requieren recursos y atención específica de contención.</div></div>
+        <div class="class-card keter"><div class="class-card-name">Keter</div><div class="class-card-desc">Extremadamente difíciles de contener. Amenaza grave para la humanidad. Máxima prioridad.</div></div>
+        <div class="class-card thaumiel"><div class="class-card-name">Thaumiel</div><div class="class-card-desc">Clasificación ultrasecreta. Anomalías usadas por la Fundación para contener otras amenazas.</div></div>
+        <div class="class-card neutralized"><div class="class-card-name">Neutralized</div><div class="class-card-desc">La anomalía ha dejado de existir o sus propiedades especiales han desaparecido.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="section-eyebrow">Portal de reclutamiento</div>
+      <h2 class="section-title">¿Listo para <span class="accent">proteger la normalidad</span>?</h2>
+      <div class="section-bar" style="margin:0 auto 24px"></div>
+      <p class="section-body" style="margin:0 auto 32px">
+        <!--
+          ═══════════════════════════════════════════
+          ZONA EDITABLE — Texto de reclutamiento
+          ═══════════════════════════════════════════
+        -->
+        La Fundación siempre necesita personal cualificado. Únete al Discord, solicita tu departamento y recibe tus credenciales de acceso al portal interno del Sitio-Axiom.
+      </p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://discord.gg/TU_SERVIDOR" target="_blank" rel="noopener" class="btn btn-discord btn-lg">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.11 18.1.128 18.14.157 18.16a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+          Unirse al Discord
+        </a>
+        <button class="btn btn-ghost btn-lg" data-action="open-login">Ya tengo cuenta — Acceder</button>
+      </div>
+      <p class="cta-disclaimer">
+        Al acceder aceptas los Protocolos de Confidencialidad de la Fundación. Todos los accesos son monitorizados.<br>
+        Comunidad de rol basada en el universo SCP Foundation (scp-wiki.wikidot.com). Proyecto fan no oficial.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-logo" aria-label="Logo Fundación SCP">
+      <img src="assets/logos/logo-main.png" alt="Fundación SCP">
+    </div>
+    <div class="footer-links">
+      <a href="https://discord.gg/TU_SERVIDOR" target="_blank" rel="noopener" class="footer-link" aria-label="Discord">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.11 18.1.128 18.14.157 18.16a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Discord
+      </a>
+      <a href="https://www.roblox.com/groups/TU_GRUPO" target="_blank" rel="noopener" class="footer-link" aria-label="Roblox">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.926 23.998L0 18.491 5.075.002 24 5.51z"/></svg>
+        Roblox
+      </a>
+    </div>
+    <p class="footer-copy">FUNDACIÓN SCP — SITIO-AXIOM · SECURE · CONTAIN · PROTECT · PROYECTO FAN NO OFICIAL</p>
+  </footer>
+
+</div><!-- /landing -->
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     APP (LOGEADO)
+═══════════════════════════════════════════════════════════ -->
+<div id="app">
+
+  <!-- TOPNAV -->
+  <nav class="topnav" role="navigation" aria-label="Navegación principal">
+    <div class="topnav-brand">
+      <img src="assets/logos/logo-main.png" alt="Logo SCP">
+      <span class="topnav-brand-name">SITIO-AXIOM</span>
+    </div>
+    <div class="topnav-divider" aria-hidden="true"></div>
+
+    <div class="topnav-items" role="menubar">
+      <button class="nav-btn active" data-nav="welcome" role="menuitem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        Bienvenida
+      </button>
+      <button class="nav-btn locked" data-nav="foundation" id="nav-foundation" role="menuitem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-4 0v2"/></svg>
+        Fundación / Empleado
+        <svg class="lock-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Bloqueado"><rect x="3" y="7" width="10" height="8" rx="1"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>
+      </button>
+      <button class="nav-btn locked" data-nav="map" id="nav-map" role="menuitem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1,6 1,22 8,18 16,22 23,18 23,2 16,6 8,2"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        Mapa
+        <svg class="lock-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Bloqueado"><rect x="3" y="7" width="10" height="8" rx="1"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>
+      </button>
+    </div>
+
+    <div class="topnav-right">
+      <div class="status-indicator" aria-label="Sistema operativo">
+        <div class="status-dot" aria-hidden="true"></div>
+        <span>ONLINE</span>
+      </div>
+      <div class="topnav-alert" role="status" aria-live="polite">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor" aria-hidden="true"><polygon points="4,0 8,8 0,8"/></svg>
+        ALERTA ACTIVA
+      </div>
+      <time class="topnav-clock" id="topnav-clock" aria-label="Hora UTC">--:--:-- UTC</time>
+
+      <!-- Theme toggle en app -->
+      <button class="theme-toggle" data-action="toggle-theme" aria-label="Cambiar tema" title="Cambiar tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+      </button>
+
+      <!-- User -->
+      <button class="topnav-user" id="topnav-user-btn" aria-haspopup="true" aria-expanded="false" aria-controls="user-dropdown">
+        <div class="user-avatar" id="topnav-avatar" aria-hidden="true">AG</div>
+        <div class="user-meta">
+          <div class="user-name-top" id="topnav-username">Agente</div>
+          <div class="user-dept-top" id="topnav-userdept">DEPT · NV</div>
+        </div>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8L2 4h8z"/></svg>
+      </button>
+
+      <!-- Dropdown -->
+      <div class="user-dropdown hidden" id="user-dropdown" role="menu">
+        <div class="clearance-strip">
+          <div class="clearance-label">Nivel de autorización</div>
+          <div class="clearance-pips">
+            <div class="clearance-pip" data-pip="1"></div>
+            <div class="clearance-pip" data-pip="2"></div>
+            <div class="clearance-pip" data-pip="3"></div>
+            <div class="clearance-pip" data-pip="4"></div>
+            <div class="clearance-pip" data-pip="5"></div>
+          </div>
+          <div class="clearance-value" id="clearance-value">AUTORIZACIÓN: —</div>
+          <div style="font-family:var(--font-mono);font-size:9px;color:var(--c-text-muted);margin-top:2px;" id="dropdown-dept">—</div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item danger" id="logout-btn" role="menuitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+          Cerrar sesión
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- APP BODY -->
+  <div class="app-body">
+    <aside class="app-sidebar hidden-sidebar" id="app-sidebar" aria-label="Navegación de departamentos"></aside>
+    <main class="app-content" id="app-content">
+      <div class="app-topbar">
+        <nav class="breadcrumb" id="breadcrumb" aria-label="Ruta de navegación">
+          <span>SITIO-AXIOM</span><span class="sep">//</span><span class="crumb">BIENVENIDA</span>
+        </nav>
+      </div>
+      <div class="page-content" id="page-content"></div>
+    </main>
+  </div>
+
+</div><!-- /app -->
+
+<script src="JS/app.js"></script>
+</body>
+</html>
